@@ -1,0 +1,66 @@
+server:
+  port: @app.port@
+
+spring:
+  application:
+    name: @app.name@
+  profiles:
+    active: @app.active@
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # 数据库连接信息配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${design.model.host}?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ${design.model.username}
+    password: ${design.model.password}
+    type: com.zaxxer.hikari.HikariDataSource
+    # hikari 连接池配置
+    hikari:
+      minimum-idle: 10 # 最小链接数
+      maximum-pool-size: 800 # 最大连接数
+      auto-commit: true # 自动提交
+      idle-timeout: 30000 # 最大空闲时间（毫秒）
+      pool-name: DataPoolHikari # 链接池名
+      max-lifetime: 180000 # 最大生命周期（毫秒）
+      connection-timeout: 30000 # 连接超时时间（毫秒）
+  # redis 配置
+  redis:
+    host: ${redis.host}
+    port: ${redis.port}
+    password: ${redis.password}
+
+
+#rocketmq配置信息
+rocketmq:
+  #nameservice服务器地址（多个以英文逗号隔开）
+  name-server: ${mq.host}
+  #生产者配置
+  producer:
+    #组名
+    group: anran-producer-group
+    #目的地（topic:tag）
+    #topic
+    topic: anran-topic
+    #sync tag(同步消息tag)
+    sync-tag: anran-sync-tags
+    #async tag(异步消息tag)
+    async-tag: anran-async-tags
+    #oneway tag(单向消息tag)
+    oneway-tag: anran-oneway-tags
+  consumer:
+    group: anran-producer-group
+    topic: anran-topic
+    tags: anran-sync-tags||anran-async-tags||anran-oneway-tags
+
+
+mybatis-plus:
+  # 搜索指定包别名
+  typeAliasesPackage: com.xu.design.pojo
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
