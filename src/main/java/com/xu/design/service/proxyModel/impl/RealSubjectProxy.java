@@ -1,6 +1,6 @@
-package com.xu.design.service.proxy.impl;
+package com.xu.design.service.proxyModel.impl;
 
-import com.xu.design.service.proxy.Subject;
+import com.xu.design.service.proxyModel.Subject;
 
 public class RealSubjectProxy implements Subject {
 
@@ -10,7 +10,7 @@ public class RealSubjectProxy implements Subject {
         try {
             this.subject = (RealSubject) this.getClass()
                     .getClassLoader()
-                    .loadClass("com.xu.design.service.proxy.impl.RealSubject")
+                    .loadClass("com.xu.design.service.proxyModel.impl.RealSubject")
                     .newInstance();
         } catch (Exception e) {
             e.printStackTrace();

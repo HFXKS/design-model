@@ -1,4 +1,4 @@
-package com.xu.design.service.proxy;
+package com.xu.design.service.proxyModel;
 
 /**
  * 代理

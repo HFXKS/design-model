@@ -28,6 +28,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class ExtensionProxy implements MethodInterceptor {
 
+
+
     private static final ExtensionProxy THIS = new ExtensionProxy();
     private static final Map<Class<?>, Object> PROXY_CACHE = new ConcurrentHashMap<>();
     private static final Map<String, Map<String, Object>> EXTENSION_CACHE = new ConcurrentHashMap<>();

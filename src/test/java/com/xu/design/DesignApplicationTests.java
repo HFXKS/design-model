@@ -9,12 +9,10 @@ import com.xu.design.service.chainResp.impl.Boss;
 import com.xu.design.service.chainResp.impl.Leader;
 import com.xu.design.service.decorator.impl.FirstRobot;
 import com.xu.design.service.decorator.impl.RobotDecorator;
-import com.xu.design.service.proxy.impl.RealSubjectProxy;
+import com.xu.design.service.proxyModel.impl.RealSubjectProxy;
 import com.xu.design.service.state.impl.Happy;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
 
 @SpringBootTest
 class DesignApplicationTests {

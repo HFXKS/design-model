@@ -1,6 +1,6 @@
-package com.xu.design.service.proxy.impl;
+package com.xu.design.service.proxyModel.impl;
 
-import com.xu.design.service.proxy.Subject;
+import com.xu.design.service.proxyModel.Subject;
 
 public class RealSubject implements Subject {
     @Override
